@@ -34,7 +34,7 @@ public class SecurityConfig {
                         .requestMatchers("getMovies","/get","addUser").hasAuthority("ADMIN")
                         .requestMatchers("login")
                         .permitAll()
-                        .anyRequest().authenticated())
+                        .anyRequest().authenticated().anyRequest().denyAll())
                .exceptionHandling(exceptionHandling ->
                        exceptionHandling.authenticationEntryPoint(jwtAuthenticationEntryPoint))
                 .sessionManagement(session ->
