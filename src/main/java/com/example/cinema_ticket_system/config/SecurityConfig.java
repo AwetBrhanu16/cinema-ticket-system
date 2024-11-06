@@ -30,7 +30,9 @@ public class SecurityConfig {
        return http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(request -> request
-                        .requestMatchers("addUser","login","booking")
+                        .requestMatchers("/get","getMovies","/booking").hasAuthority("USER")
+                        .requestMatchers("getMovies","/get","addUser").hasAuthority("ADMIN")
+                        .requestMatchers("login")
                         .permitAll()
                         .anyRequest().authenticated())
                .exceptionHandling(exceptionHandling ->

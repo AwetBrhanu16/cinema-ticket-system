@@ -37,7 +37,7 @@ public class UsersController {
         return userService.verifyUser(userLoginRequest);
     }
 
-    //    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("hasRole('USER')")
     @GetMapping("/get")
     public List<UserRequest> getUser() {
         return userService.getAllUsers();
