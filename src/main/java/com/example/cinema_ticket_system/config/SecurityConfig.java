@@ -31,7 +31,7 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(request -> request
                         .requestMatchers("/get","getMovies","/booking").hasAuthority("USER")
-                        .requestMatchers("getMovies","/get","addUser").hasAuthority("ADMIN")
+                        .requestMatchers("getMovies","/get","registerUser").hasAuthority("ADMIN")
                         .requestMatchers("login")
                         .permitAll()
                         .anyRequest().authenticated().anyRequest().denyAll())
