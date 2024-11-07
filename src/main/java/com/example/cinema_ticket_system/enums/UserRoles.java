@@ -1,6 +1,6 @@
 package com.example.cinema_ticket_system.enums;
 
-public enum Roles {
+public enum UserRoles {
 
     ADMIN,
     USER

@@ -1,6 +1,9 @@
 package com.example.cinema_ticket_system.request;
 
 import com.example.cinema_ticket_system.enums.Gender;
+import com.example.cinema_ticket_system.enums.UserRoles;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import lombok.Data;
 
 @Data
@@ -14,6 +17,8 @@ public class UserRequest {
     private String mobileNo;
     private String emailId;
     private Gender gender;
-    private String roles;
+
+    @Enumerated(EnumType.STRING)
+    private UserRoles roles;
     private String password;
 }

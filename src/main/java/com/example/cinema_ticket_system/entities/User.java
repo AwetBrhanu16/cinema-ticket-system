@@ -1,6 +1,5 @@
 package com.example.cinema_ticket_system.entities;
-import com.example.cinema_ticket_system.enums.Gender;
-import com.example.cinema_ticket_system.enums.UserRole;
+import com.example.cinema_ticket_system.enums.UserRoles;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,6 +11,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -43,14 +43,17 @@ public class User implements UserDetails {
     @Column(unique = true)
     private String emailId;
 
-    private String roles;
+    @Enumerated(EnumType.STRING)
+    private UserRoles userRoles;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Ticket> ticketList = new ArrayList<>();
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(roles));
+        GrantedAuthority authority =
+                new SimpleGrantedAuthority(userRoles.name());
+        return Collections.singletonList(authority);
     }
 
     @Override

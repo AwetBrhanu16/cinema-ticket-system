@@ -8,13 +8,14 @@ import com.example.cinema_ticket_system.response.UserResponse;
 public class UserConvertor {
 
     public static User userDtoToUser(UserRequest userRequest) {
-        User user = User.builder()
+        User user;
+        user = User.builder()
                 .firstName(userRequest.getFirstName())
                 .lastName(userRequest.getLastName())
                 .userName(userRequest.getUserName())
                 .mobileNo(userRequest.getMobileNo())
                 .emailId(userRequest.getEmailId())
-                .roles(userRequest.getRoles())
+                .userRoles(userRequest.getRoles())
                 .password(userRequest.getPassword())
                 .build();
 
@@ -22,7 +23,8 @@ public class UserConvertor {
     }
 
     public static UserResponse userToUserDto(User user) {
-        UserResponse userDto = UserResponse.builder()
+        UserResponse userDto;
+        userDto = UserResponse.builder()
                 .name(user.getUsername())
                 .build();
 

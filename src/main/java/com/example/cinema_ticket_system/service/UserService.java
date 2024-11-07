@@ -82,7 +82,7 @@ public class UserService {
             userRequest.setLastName(user.getLastName());
             userRequest.setEmailId(user.getEmailId());
             userRequest.setMobileNo(user.getMobileNo());
-            userRequest.setRoles(user.getRoles());
+            userRequest.setRoles(user.getUserRoles());
             userRequest.setPassword(user.getPassword());
             userRequest.setUserId(user.getId());
             return userRequest;
